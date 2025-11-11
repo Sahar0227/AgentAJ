@@ -364,6 +364,10 @@ section {
     z-index: 0;
 }
 
+.stat-image:has(img[src]:not([src=""])) .image-placeholder-fallback {
+    display: none;
+}
+
 /* About Section - Single Image */
 .about-image-placeholder {
     display: flex;
@@ -405,6 +409,10 @@ section {
     right: 0;
     bottom: 0;
     z-index: 0;
+}
+
+.single-image:has(img[src]:not([src=""])) .image-placeholder-fallback {
+    display: none;
 }
 
 .image-overlap-container {

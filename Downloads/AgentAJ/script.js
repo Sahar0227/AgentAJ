@@ -137,6 +137,38 @@ function highlightNavLink() {
 
 window.addEventListener('scroll', highlightNavLink);
 
+// Hide image placeholders when images load
+document.addEventListener('DOMContentLoaded', () => {
+    const images = document.querySelectorAll('.stat-image img, .single-image img');
+    
+    images.forEach(img => {
+        if (img.src && img.src !== window.location.href) {
+            // Image has a valid src, hide the placeholder
+            const placeholder = img.parentElement.querySelector('.image-placeholder-fallback');
+            if (placeholder) {
+                placeholder.style.display = 'none';
+            }
+        }
+        
+        // Also hide placeholder when image loads successfully
+        img.addEventListener('load', function() {
+            const placeholder = this.parentElement.querySelector('.image-placeholder-fallback');
+            if (placeholder) {
+                placeholder.style.display = 'none';
+            }
+        });
+        
+        // Show placeholder if image fails to load
+        img.addEventListener('error', function() {
+            const placeholder = this.parentElement.querySelector('.image-placeholder-fallback');
+            if (placeholder) {
+                placeholder.style.display = 'flex';
+            }
+            this.style.display = 'none';
+        });
+    });
+});
+
 // Mortgage Calculator
 const mortgageCalculator = document.getElementById('mortgageCalculator');
 
