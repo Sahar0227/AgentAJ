@@ -137,3 +137,65 @@ function highlightNavLink() {
 
 window.addEventListener('scroll', highlightNavLink);
 
+// Mortgage Calculator
+const mortgageCalculator = document.getElementById('mortgageCalculator');
+
+if (mortgageCalculator) {
+    mortgageCalculator.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form values
+        const homePrice = parseFloat(document.getElementById('homePrice').value) || 0;
+        const downPayment = parseFloat(document.getElementById('downPayment').value) || 0;
+        const interestRate = parseFloat(document.getElementById('interestRate').value) || 0;
+        const loanTerm = parseFloat(document.getElementById('loanTerm').value) || 0;
+        
+        // Calculate loan amount
+        const loanAmount = homePrice - downPayment;
+        
+        if (loanAmount <= 0) {
+            alert('Down payment must be less than home price.');
+            return;
+        }
+        
+        // Calculate monthly interest rate
+        const monthlyRate = (interestRate / 100) / 12;
+        
+        // Calculate number of payments
+        const numPayments = loanTerm * 12;
+        
+        // Calculate monthly payment using mortgage formula
+        // M = P * [r(1+r)^n] / [(1+r)^n - 1]
+        let monthlyPayment = 0;
+        
+        if (monthlyRate > 0) {
+            const numerator = monthlyRate * Math.pow(1 + monthlyRate, numPayments);
+            const denominator = Math.pow(1 + monthlyRate, numPayments) - 1;
+            monthlyPayment = loanAmount * (numerator / denominator);
+        } else {
+            monthlyPayment = loanAmount / numPayments;
+        }
+        
+        // Calculate total interest paid
+        const totalPaid = monthlyPayment * numPayments;
+        const totalInterest = totalPaid - loanAmount;
+        
+        // Display results
+        const resultsDiv = document.getElementById('calculatorResults');
+        const monthlyPaymentEl = document.getElementById('monthlyPayment');
+        const principalInterestEl = document.getElementById('principalInterest');
+        const totalLoanEl = document.getElementById('totalLoan');
+        const totalInterestEl = document.getElementById('totalInterest');
+        
+        if (resultsDiv && monthlyPaymentEl && principalInterestEl && totalLoanEl && totalInterestEl) {
+            monthlyPaymentEl.textContent = `$${monthlyPayment.toFixed(2)}`;
+            principalInterestEl.textContent = `$${monthlyPayment.toFixed(2)}`;
+            totalLoanEl.textContent = `$${loanAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            totalInterestEl.textContent = `$${totalInterest.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    });
+}
+
