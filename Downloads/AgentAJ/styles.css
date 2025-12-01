@@ -306,9 +306,12 @@ section {
 
 .stats-images {
     display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    flex-direction: row;
+    gap: 1.5rem;
     position: relative;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .stat-image {
@@ -330,10 +333,13 @@ section {
 }
 
 .stat-image-2 {
-    transform: rotate(3deg);
-    margin-left: 2rem;
-    margin-top: -1rem;
+    transform: rotate(0deg);
     z-index: 1;
+}
+
+.stat-image-3 {
+    transform: rotate(3deg);
+    z-index: 2;
 }
 
 .stat-image:hover {
