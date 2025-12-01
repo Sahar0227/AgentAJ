@@ -9,16 +9,16 @@
     --primary-color: #1e3a8a;
     --primary-dark: #1e2a5e;
     --primary-light: #3b5bdb;
-    --secondary-color: #ff6b35;
-    --accent-color: #ff6b35;
+    --secondary-color: #2563eb;
+    --accent-color: #2563eb;
     --exp-blue: #1e3a8a;
-    --exp-orange: #ff6b35;
+    --exp-blue-light: #2563eb;
     --text-dark: #1f2937;
     --text-light: #6b7280;
     --bg-light: #f1f5f9;
     --bg-white: #ffffff;
-    --bg-gradient: linear-gradient(135deg, #1e3a8a 0%, #3b5bdb 50%, #ff6b35 100%);
-    --bg-gradient-hero: linear-gradient(135deg, #1e3a8a 0%, #3b5bdb 50%, #ff6b35 100%);
+    --bg-gradient: linear-gradient(135deg, #1e3a8a 0%, #3b5bdb 50%, #2563eb 100%);
+    --bg-gradient-hero: linear-gradient(135deg, #1e3a8a 0%, #3b5bdb 50%, #2563eb 100%);
     --border-color: #e2e8f0;
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 20px 25px -5px rgba(30, 58, 138, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -65,7 +65,7 @@ body {
 .logo h1 {
     font-size: 1.75rem;
     font-weight: 700;
-    background: linear-gradient(135deg, var(--exp-blue) 0%, var(--exp-orange) 100%);
+    background: linear-gradient(135deg, var(--exp-blue) 0%, var(--exp-blue-light) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -97,7 +97,7 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, var(--exp-blue), var(--exp-orange));
+    background: linear-gradient(90deg, var(--exp-blue), var(--exp-blue-light));
     transition: width 0.3s ease;
 }
 
@@ -210,7 +210,7 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--exp-blue) 0%, var(--primary-light) 50%, var(--exp-orange) 100%);
+    background: linear-gradient(135deg, var(--exp-blue) 0%, var(--primary-light) 50%, var(--exp-blue-light) 100%);
     color: white;
     box-shadow: 0 4px 15px rgba(30, 58, 138, 0.4);
     font-weight: 600;
@@ -218,7 +218,7 @@ body {
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--exp-blue) 50%, #ff5722 100%);
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--exp-blue) 50%, var(--exp-blue-light) 100%);
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(30, 58, 138, 0.5);
 }
@@ -250,7 +250,7 @@ section {
     font-weight: 700;
     margin-bottom: 1rem;
     color: var(--text-dark);
-    background: linear-gradient(135deg, var(--exp-blue) 0%, var(--exp-orange) 100%);
+    background: linear-gradient(135deg, var(--exp-blue) 0%, var(--exp-blue-light) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -275,7 +275,7 @@ section {
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--exp-blue), var(--exp-orange), transparent);
+    background: linear-gradient(90deg, transparent, var(--exp-blue), var(--exp-blue-light), transparent);
 }
 
 .about-content {
@@ -579,7 +579,7 @@ section {
 .highlight-number {
     font-size: 3.5rem;
     font-weight: 700;
-    background: linear-gradient(135deg, var(--exp-blue) 0%, var(--exp-orange) 100%);
+    background: linear-gradient(135deg, var(--exp-blue) 0%, var(--exp-blue-light) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -606,7 +606,7 @@ section {
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--exp-blue), var(--exp-orange), transparent);
+    background: linear-gradient(90deg, transparent, var(--exp-blue), var(--exp-blue-light), transparent);
 }
 
 .services-grid {
@@ -634,7 +634,7 @@ section {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, var(--exp-blue) 0%, var(--exp-orange) 100%);
+    background: linear-gradient(135deg, var(--exp-blue) 0%, var(--exp-blue-light) 100%);
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 0;
@@ -749,7 +749,7 @@ section {
 }
 
 .contact-card a:hover {
-    color: var(--exp-orange);
+    color: var(--exp-blue-light);
     text-decoration: underline;
 }
 
@@ -988,7 +988,7 @@ section {
     font-size: 3rem;
     font-weight: 700;
     text-align: center;
-    background: linear-gradient(135deg, var(--exp-blue) 0%, var(--exp-orange) 100%);
+    background: linear-gradient(135deg, var(--exp-blue) 0%, var(--exp-blue-light) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1038,7 +1038,7 @@ section {
 .footer-brand h3 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
-    background: linear-gradient(135deg, var(--exp-blue) 0%, var(--exp-orange) 100%);
+    background: linear-gradient(135deg, var(--exp-blue) 0%, var(--exp-blue-light) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
