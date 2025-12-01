@@ -51,34 +51,59 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Contact Form Handling
 const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('form-status');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
-        // Get form values
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const phone = document.getElementById('phone').value;
-        const message = document.getElementById('message').value;
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.textContent;
         
-        // Create mailto link
-        const subject = encodeURIComponent('Contact from AgentAJ Website');
-        const body = encodeURIComponent(
-            `Name: ${name}\n` +
-            `Email: ${email}\n` +
-            `Phone: ${phone}\n\n` +
-            `Message:\n${message}`
-        );
+        // Disable submit button and show loading state
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
+        formStatus.style.display = 'none';
         
-        // Open email client
-        window.location.href = `mailto:homesbyjawid@gmail.com?subject=${subject}&body=${body}`;
-        
-        // Show success message
-        alert('Thank you for your message! Your email client should open shortly.');
-        
-        // Reset form
-        contactForm.reset();
+        try {
+            const formData = new FormData(contactForm);
+            
+            // Add formatted message with all details
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const phone = formData.get('phone') || 'Not provided';
+            const message = formData.get('message');
+            
+            formData.set('message', `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`);
+            
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                formStatus.style.display = 'block';
+                formStatus.style.backgroundColor = '#d1fae5';
+                formStatus.style.color = '#065f46';
+                formStatus.style.border = '1px solid #10b981';
+                formStatus.textContent = 'Thank you! Your message has been sent successfully.';
+                contactForm.reset();
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            formStatus.style.display = 'block';
+            formStatus.style.backgroundColor = '#fee2e2';
+            formStatus.style.color = '#991b1b';
+            formStatus.style.border = '1px solid #ef4444';
+            formStatus.textContent = 'Sorry, there was an error sending your message. Please try again or email directly at homesbyjawid@gmail.com';
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
+        }
     });
 }
 
