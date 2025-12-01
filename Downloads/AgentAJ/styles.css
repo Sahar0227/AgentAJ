@@ -312,6 +312,16 @@ section {
     z-index: 1;
 }
 
+.journey-image-2 img {
+    object-fit: contain;
+    object-position: center;
+}
+
+.journey-image-3 img {
+    object-fit: cover;
+    object-position: center top;
+}
+
 .journey-image img[src=""] {
     display: none;
 }
