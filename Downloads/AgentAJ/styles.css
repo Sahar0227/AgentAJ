@@ -312,6 +312,10 @@ section {
     z-index: 1;
 }
 
+.journey-image img[src=""] {
+    display: none;
+}
+
 .journey-caption {
     position: absolute;
     bottom: 0;
@@ -349,6 +353,10 @@ section {
     right: 0;
     bottom: 0;
     z-index: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .journey-image:has(img[src]:not([src=""])) .image-placeholder-fallback {
